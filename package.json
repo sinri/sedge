@@ -1,0 +1,22 @@
+{
+  "name": "sedge",
+  "version": "1.0.0",
+  "description": "svg helper",
+  "main": "sedge.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinri/sedge.git"
+  },
+  "keywords": [
+    "SVG"
+  ],
+  "author": "Sinri Edogawa",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/sinri/sedge/issues"
+  },
+  "homepage": "https://github.com/sinri/sedge#readme"
+}

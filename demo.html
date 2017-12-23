@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo of SEDGE</title>
+    <script src="sedge.js"></script>
+</head>
+<body>
+<h1>Demo of SEDGE</h1>
+<p>
+    viewBox="0 0 800 600"
+</p>
+<hr>
+<svg width="10000px" height="10000px" id="demo" style="overflow: auto" version="1.1"
+     xmlns="http://www.w3.org/2000/svg"></svg>
+<script>
+    sedge.init('demo');
+    // demo0();
+    demo1();
+    sedge.cleanAndDraw();
+
+    function demo0() {
+        sedge.addElement('path', {
+            d: "M120 100 L180 100 Z",
+            stroke: "black", 'stroke-width': "1", fill: "blue",
+        });
+        sedge.addElement('path', {
+            d: "M220 100 L280 100 Z",
+            stroke: "black", 'stroke-width': "1", fill: "blue",
+        });
+        sedge.addElement('path', {
+            d: "M100 100 Q120 140 160 140 L240 140 Q300 140 300 100",
+            stroke: "black", 'stroke-width': "1",
+            fill: "none",
+        });
+        sedge.addElement('circle', {
+            cx: 100, cy: 100, r: 20,
+            stroke: "black", 'stroke-width': "2", fill: "red",
+        });
+        sedge.addElement('circle', {
+            cx: 200, cy: 100, r: 20,
+            stroke: "black", 'stroke-width': "2", fill: "red",
+        });
+        sedge.addElement('circle', {
+            cx: 300, cy: 100, r: 20,
+            stroke: "black", 'stroke-width': "2", fill: "red",
+        });
+    }
+
+    function demo1() {
+        let data = {
+            '1': [2, 4],
+            '2': [3],
+            '3': [6, 7, 8, 9],
+            '4': [5, 6, 7, 8, 9],
+            '5': [6, 7, 8, 9],
+            '6': [10, 12, 13, 14, 15],
+            '7': [10, 12, 13, 14, 15],
+            '8': [10, 12, 13, 14, 15],
+            '9': [10, 12, 13, 14, 15],
+            '10': [11, 12, 13, 14, 15],
+            '11': [12, 13, 14, 15],
+            '12': [16],
+            '13': [16],
+            '14': [16],
+            '15': [16],
+            '16': [],
+        };
+        let list = [];
+        for (let key in data) {
+            if (!data.hasOwnProperty(key)) continue;
+            let accessedNodeIds = [];
+            for (let i = 0; i < data[key].length; i++) {
+                accessedNodeIds.push('node_' + data[key][i]);
+            }
+            list.push({
+                id: 'node_' + key,
+                accessedNodeIds: accessedNodeIds,
+            });
+        }
+        sedge.renderSimpleGraph(list);
+
+        // [
+        //     {
+        //         id:'node_1',
+        //         accessedNodeIds:['node_2','node_3'],
+        //     },
+        //     {
+        //         id:'node_2',
+        //         accessedNodeIds:['node_3'],
+        //     },
+        //     {
+        //         id:'node_3',
+        //         accessedNodeIds:[],
+        //     }
+        // ]
+    }
+</script>
+</body>
+</html>
